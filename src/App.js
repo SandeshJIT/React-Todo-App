@@ -22,7 +22,7 @@ function App() {
  
   function addToList(){
     const todo = todoNameRef.current.value;
-    if(todo == '') return null;
+    if(todo === '') return null;
     todoNameRef.current.value = null;
     setTodos(prevTodos =>{
         return [...prevTodos , {id:uuidv4() , name : todo , completed : false}]
@@ -30,7 +30,7 @@ function App() {
   }
   function toggleTodo(id){
     const states = [...todos];
-    const todo = states.find((element)=>id==element.id);
+    const todo = states.find((element)=>id===element.id);
     todo.completed = !todo.completed;
     setTodos(states);
 
@@ -39,7 +39,7 @@ function App() {
     console.log("Called clear todo")
       var state = todos;
       const res = state.filter(element=>
-          element.completed == false
+          element.completed === false
       )
       setTodos(res)
   }
@@ -57,7 +57,7 @@ function App() {
         </div>
       </div>
       <TodoList key={todos.id} todos={todos} toggleTodo = {toggleTodo}/>
-      <h3 className="numberoftasksleft">{todos.filter(element=>element.completed == false).length} Items left to do.</h3>
+      <h3 className="numberoftasksleft">{todos.filter(element=>element.completed === false).length} Items left to do.</h3>
     </div>
     </>
   );
